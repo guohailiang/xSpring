@@ -1,3 +1,16 @@
+/*
+ **********************************************************
+ * Time    : 2018/11/23
+ * Author  : Michael Guo
+ * Project : springAopDemo-XML
+ * Class   : MainTest
+ * Contact : XXXXXX@gmail.com
+ * Software: Idea
+ * Version : V1.0
+ * Desc    : 采用AOP原理实现，基于XML方式
+ * Logs    :
+ ***********************************************************
+ */
 import guo.spring.aopdemo.Fireable;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
