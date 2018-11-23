@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--用户bean参数-->
+    <!--声明xml涉及的类，对应的id名称-->
+    <bean id="hw" class="HelloWorld">
+        <!--类中的属性，属性的值-->
+        <property name="name" value="Spring-Guo"></property>
+    </bean>
+</beans>
