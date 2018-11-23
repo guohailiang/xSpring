@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--用户bean参数-->
+    <!--声明xml涉及的类，对应的id名称-->
+    <bean id="tank" class="guo.spring.aopdemo.Tank"/>
+    <bean id="fighterPlane" class="guo.spring.aopdemo.FighterPlane"/>
+
+    <!-- 下面是新添加的 -->
+    <bean id="fireAssist" class="guo.spring.aopdemo.FireAssist" />
+
+    <!-- Aop根元素 -->
+    <aop:config>
+        <!-- 切面(Aspect) -->
+        <aop:aspect ref="fireAssist">
+            <!-- 切点 -->
+            <!--
+                (* guo.spring.aopdemo.*.*(..))表示包下所有的类的所有方法。
+                第一个*代表所有的返回值类型
+                第二个*代表所有的类
+                第三个*代表类所有方法
+                最后一个..代表所有的参数。
+            -->
+            <!--
+                任何名字以”attack”结尾的方法：execution(* *attack(..))
+                任何名字以”attack”开头的方法：execution(* attack*(..))
+                任何实现Fireable接口的类的方法：execution(* twm.spring.aopdemo.Fireable.*(..))
+            -->
+            <aop:pointcut expression="execution(* guo.spring.aopdemo.*.*(..))" id="pc1"/>
+
+            <!-- 通知(Advice) -->
+            <aop:before method="actionLog" pointcut-ref="pc1"/>
+            <aop:after method="reportComplete"  pointcut-ref="pc1" />
+            <!-- 通知也可这样写 <aop:before method="ActionLog" pointcut="execution(* twm.spring.aopdemo.*.*(..))"/> -->
+        </aop:aspect>
+        <!-- 可加多个切面(Aspect) -->
+    </aop:config>
+
+</beans>
